@@ -40,7 +40,7 @@ a.site-name{
   font-family:'Archivo Black', sans-serif;
   font-size:22px;
   display:block;
-  margin-bottom:10px;
+  margin-bottom:4px;
   transition:color .2s;
 }
 a.site-name:hover{color:var(--brick);}
@@ -81,21 +81,35 @@ a.site-name:hover{color:var(--brick);}
 }
 .sb-nav a:hover{opacity:1; color:var(--brick);}
 
-/* ── Monogram ── */
+/* ── Stamp (spinning circle) ── */
 .sb-bottom{margin-top:40px;}
-.monogram{
-  font-family:'Archivo Black', sans-serif;
-  font-size:22px;
-  letter-spacing:-1px;
-  width:52px; height:52px;
-  border:2px solid var(--ink);
-  display:flex; align-items:center; justify-content:center;
-  margin-bottom:16px;
-  transition:background .25s, color .25s, border-color .25s;
-  cursor:default;
-  user-select:none;
+
+@keyframes spin-stamp{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
 }
-.monogram:hover{background:var(--brick); color:var(--paper); border-color:var(--brick);}
+.stamp{
+  width:100px; height:100px;
+  display:flex; align-items:center; justify-content:center;
+  margin-bottom:18px;
+  cursor:default;
+}
+.stamp svg{
+  width:100%; height:100%;
+  animation:spin-stamp 14s linear infinite;
+  transform-origin:center;
+}
+.stamp:hover svg{animation-duration:4s;}
+.stamp text{
+  font-family:'Inter', sans-serif;
+  font-size:7px;
+  font-weight:700;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  fill:var(--ink);
+}
+.stamp .dot{fill:var(--brick);}
+
 .socials a{
   font-size:12px;
   font-weight:600;
@@ -131,25 +145,18 @@ section{margin-bottom:60px;}
 }
 .filter-btn{
   font-family:'Inter', sans-serif;
-  font-size:12px;
-  font-weight:700;
-  text-transform:uppercase;
-  letter-spacing:0.8px;
+  font-size:12px; font-weight:700;
+  text-transform:uppercase; letter-spacing:0.8px;
   padding:7px 14px;
   border:1.5px solid var(--line);
-  background:transparent;
-  color:var(--ink);
-  cursor:pointer;
-  border-radius:2px;
-  opacity:0.6;
-  transition:all .18s;
+  background:transparent; color:var(--ink);
+  cursor:pointer; border-radius:2px;
+  opacity:0.6; transition:all .18s;
 }
 .filter-btn:hover{opacity:1; border-color:var(--ink);}
 .filter-btn.active{
-  background:var(--ink);
-  color:var(--paper);
-  border-color:var(--ink);
-  opacity:1;
+  background:var(--ink); color:var(--paper);
+  border-color:var(--ink); opacity:1;
 }
 
 /* ── Grid ── */
@@ -159,20 +166,15 @@ section{margin-bottom:60px;}
   gap:14px;
 }
 .card{
-  position:relative;
-  overflow:hidden;
-  cursor:pointer;
-  background:var(--paper-deep);
-  border:1px solid var(--line);
-  aspect-ratio:4/3;
-  display:block;
-  transition:opacity .2s;
+  position:relative; overflow:hidden;
+  cursor:pointer; background:var(--paper-deep);
+  border:1px solid var(--line); aspect-ratio:4/3;
+  display:block; transition:opacity .2s;
 }
 .card.hidden{display:none;}
 .card img{
   width:100%; height:100%;
-  object-fit:cover;
-  display:block;
+  object-fit:cover; display:block;
   transition:transform .45s ease;
 }
 .card:hover img{transform:scale(1.05);}
@@ -191,8 +193,7 @@ section{margin-bottom:60px;}
 /* ── UX placeholder ── */
 .ux-slot{
   border:1.5px dashed var(--line);
-  padding:52px 32px;
-  text-align:center;
+  padding:52px 32px; text-align:center;
   background:var(--paper-deep);
 }
 .ux-slot .ux-eyebrow{
@@ -211,55 +212,64 @@ section{margin-bottom:60px;}
   font-size:14px; padding:13px 28px;
   background:var(--ink); color:var(--paper);
   border-radius:2px; transition:background .2s;
+  border:none; cursor:pointer;
 }
 .btn:hover{background:var(--brick);}
 
-/* ── Contact ── */
-#contact p{font-size:14px; opacity:0.70;}
-#contact a{color:var(--brick); font-weight:600;}
-
 /* ── Project page ── */
-.project-back{
-  margin-bottom:40px;
-}
+.project-back{margin-bottom:40px;}
 .project-back a{
-  font-size:12px;
-  font-weight:700;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  opacity:0.45;
-  transition:opacity .2s, color .2s;
+  font-size:12px; font-weight:700;
+  text-transform:uppercase; letter-spacing:1px;
+  opacity:0.45; transition:opacity .2s, color .2s;
 }
 .project-back a:hover{opacity:1; color:var(--brick);}
 
 .project-header{margin-bottom:48px;}
 .project-header h1{
   font-family:'Archivo Black', sans-serif;
-  font-size:42px;
-  line-height:1.05;
-  margin:14px 0 16px;
-  letter-spacing:-0.5px;
+  font-size:42px; line-height:1.05;
+  margin:14px 0 16px; letter-spacing:-0.5px;
 }
 .project-header .desc{
-  font-size:15px;
-  opacity:0.70;
-  max-width:560px;
-  line-height:1.65;
+  font-size:15px; opacity:0.70;
+  max-width:560px; line-height:1.65;
 }
 .project-tags{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:4px;}
 .project-tags span{
-  font-size:11px;
-  font-weight:700;
-  text-transform:uppercase;
-  letter-spacing:0.8px;
+  font-size:11px; font-weight:700;
+  text-transform:uppercase; letter-spacing:0.8px;
   padding:5px 12px;
   border:1.5px solid var(--line);
-  color:var(--ink);
-  opacity:0.70;
+  color:var(--ink); opacity:0.70;
 }
 
-.project-gallery{display:flex; flex-direction:column; gap:4px;}
+.project-gallery{display:flex; flex-direction:column; gap:0;}
 .project-gallery img{width:100%; display:block;}
+
+/* ── Contact form ── */
+.contact-form{max-width:540px;}
+.form-group{margin-bottom:22px;}
+.form-group label{
+  display:block;
+  font-size:10px; font-weight:700;
+  text-transform:uppercase; letter-spacing:1.2px;
+  opacity:0.45; margin-bottom:8px;
+}
+.form-group input,
+.form-group textarea{
+  width:100%;
+  background:var(--paper-deep);
+  border:1.5px solid var(--line);
+  padding:13px 16px;
+  font-family:'Inter', sans-serif;
+  font-size:14px; color:var(--ink);
+  border-radius:2px; outline:none;
+  transition:border-color .2s;
+}
+.form-group input:focus,
+.form-group textarea:focus{border-color:var(--ink);}
+.form-group textarea{resize:vertical; min-height:140px;}
 
 /* ── Responsive ── */
 @media(max-width:900px){
@@ -268,9 +278,13 @@ section{margin-bottom:60px;}
   main{padding:32px 24px 60px;}
   .grid{grid-template-columns:repeat(2,1fr);}
   .sb-bottom{display:flex; align-items:center; gap:20px; margin-top:28px;}
-  .monogram{margin-bottom:0;}
+  .stamp{margin-bottom:0;}
   .project-header h1{font-size:30px;}
 }
 @media(max-width:520px){.grid{grid-template-columns:1fr;}}
 :focus-visible{outline:2px solid var(--brick); outline-offset:3px;}
-@media(prefers-reduced-motion:reduce){*{transition:none !important;} html{scroll-behavior:auto;}}
+@media(prefers-reduced-motion:reduce){
+  *{transition:none !important;}
+  .stamp svg{animation:none !important;}
+  html{scroll-behavior:auto;}
+}
