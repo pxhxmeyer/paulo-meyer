@@ -104,7 +104,7 @@ a.site-name:hover{color:var(--brick);}
   font-family:'Inter', sans-serif;
   font-size:9px;
   font-weight:700;
-  letter-spacing:2px;
+  letter-spacing:10px;
   text-transform:uppercase;
   fill:var(--ink);
 }
